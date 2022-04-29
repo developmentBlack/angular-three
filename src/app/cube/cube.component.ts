@@ -69,7 +69,7 @@ export class CubeComponent implements OnInit, AfterViewInit {
   private createScene() {
     //* Scene
     this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color(0x000000)
+    this.scene.background = new THREE.Color(0xffff)
     this.scene.add(this.cube);
     //*Camera
     let aspectRatio = this.getAspectRatio();
