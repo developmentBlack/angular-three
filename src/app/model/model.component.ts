@@ -128,6 +128,7 @@ export class ModelComponent implements OnInit, AfterViewInit {
       this.nearClippingPane,
       this.farClippingPane
     )
+    
     this.camera.position.x = 50;
     this.camera.position.y = 10;
     this.camera.position.z = 500;
