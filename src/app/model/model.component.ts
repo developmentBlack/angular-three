@@ -50,7 +50,9 @@ export class ModelComponent implements OnInit, AfterViewInit {
   }
 
   private loaderGLTF = new GLTFLoader();
-  private dracoLoader  = new DRACOLoader();
+  // private dracoLoader  = new DRACOLoader();
+  
+  
 
   private renderer: THREE.WebGLRenderer;
 
@@ -98,6 +100,10 @@ export class ModelComponent implements OnInit, AfterViewInit {
    */
   private createScene() {
     const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath("/examples/js/libs/draco/");
+    dracoLoader.setDecoderConfig({type: 'js'}); 
+    this.loaderGLTF.setDRACOLoader( dracoLoader );
+
     //* Scene
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color(0xffffff)
@@ -108,6 +114,11 @@ export class ModelComponent implements OnInit, AfterViewInit {
       box.getCenter(this.model.position); // this re-sets the mesh position
       this.model.position.multiplyScalar(-1);
       this.scene.add(this.model);
+    },function ( xhr ) {
+
+      console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+      console.log("QLOOOO");
+  
     });
     //*Camera
     let aspectRatio = this.getAspectRatio();
